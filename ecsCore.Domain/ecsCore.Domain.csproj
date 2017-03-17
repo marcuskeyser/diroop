@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Methods\**" />
+    <EmbeddedResource Remove="Methods\**" />
+    <None Remove="Methods\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pocos\_System\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ecsCore.Constants\ecsCore.System.csproj" />
+  </ItemGroup>
+
+</Project>
