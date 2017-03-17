@@ -27,7 +27,7 @@ namespace ecsCore.Data.Repositories
                 using (var ctx = new DataContext())
                 {
                     myEntity = ctx.Entities
-                        .Include("Names")
+                        .Include("Nzzames")
                         .ToList();
                     return myEntity;
                 }
