@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pocos\_System\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ecsCore.Constants\ecsCore.System.csproj" />
   </ItemGroup>
 

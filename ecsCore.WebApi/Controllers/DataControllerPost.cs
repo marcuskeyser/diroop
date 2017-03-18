@@ -9,14 +9,16 @@ using ecsCore.Domain.POCO;
 
 namespace ecsCore.WebApi.Controllers
 {
-    //[Route("api/[controller]")]
+    [Route("api/[controller]")]
     public partial class DataController : Controller
     {
         [HttpPost]
-        public JsonResult Post([FromBody]string value)
+        public IActionResult Post([FromBody] HttpHeader request)//HttpHeader
         {
             EntitiesRepository repo = new EntitiesRepository();
-            return new JsonResult(repo.SelectAll());
+            List<Entity> results = repo.SelectAll();
+            if (results == null) { return NotFound(); }
+            return Ok(results);
         }
     }
 }

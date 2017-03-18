@@ -60,7 +60,7 @@ namespace ecsCore.Tests
                 return null;
             }
         }
-        private List<Entity> GetEntityFromContext()
+        private List<Entity> GetEntityFromDbContext()
         {
             List<Entity> results;
             try

@@ -27,7 +27,11 @@ namespace ecsCore.Data.Repositories
                 using (var ctx = new DataContext())
                 {
                     myEntity = ctx.Entities
-                        .Include("Names")
+                        .Include(i => i.Names)
+                        .Include(i => i.Phones)
+                        .Include(i => i.Addresses)
+                        .Include(i => i.Emails)
+                        .Include(i => i.SocialMedia)
                         .ToList();
                     return myEntity;
                 }
@@ -49,3 +53,21 @@ namespace ecsCore.Data.Repositories
         }
     }
 }
+
+/*
+ *     public static IQueryable<T> Include<T>(this IQueryable<T> query, params string[] navProperties)
+        where T : class
+    {
+        foreach (var navProperty in navProperties)
+            query = query.Include(navProperty);
+
+        return query;
+    }
+
+            And use it like this even in a generic implementation:
+
+            string[] includedNavigationProperties = new string[] { "NavProp1.SubNavProp", "NavProp2" };
+
+            var query = context.Set<T>()
+            .Include(includedNavigationProperties);
+ * */

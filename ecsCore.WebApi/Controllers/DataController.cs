@@ -27,5 +27,9 @@ namespace ecsCore.WebApi.Controllers
     //    public void Delete(int id)
     //    {
     //    }
-    //}
+    //    [HttpGet()]
+    //    public IActionResult Get()
+    //    {
+    //    }
+    //} 
 }
