@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ecsCore.Domain.POCO
 {
-    public class HttpHeader
+    public class HttpBodyHeader
     {
 	public string scheme { get; set; }
     public string model { get; set; }

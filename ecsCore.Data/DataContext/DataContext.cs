@@ -8,6 +8,11 @@ namespace ecsCore.Data
 {
     public class DataContext : DbContext
     {
+        //public DataContext(DbContextOptions<DataContext> options)
+        //    : base(options)
+        //{
+        //}
+
         public DbSet<Entity> Entities { get; set; }
         public DbSet<EntityAddress> EntityAddresses { get; set; }
         public DbSet<EntityCreditCard> EntityCreditCards { get; set; }
@@ -52,7 +57,6 @@ namespace ecsCore.Data
               options => options.MaxBatchSize(30));
             optionsBuilder.EnableSensitiveDataLogging();
         }
-
         public override int SaveChanges()
         {
             foreach (var entry in ChangeTracker.Entries()

@@ -12,11 +12,31 @@ namespace ecsCore.WebApi.Controllers
     [Route("api/[controller]")]
     public partial class DataController : Controller
     {
+        EntitiesRepository _repo = new EntitiesRepository();
+        public DataController(EntitiesRepository repo) {
+            _repo = repo;
+        }
+
         [HttpPost]
-        public IActionResult Post([FromBody] HttpHeader request)//HttpHeader
+        public IActionResult Post([FromBody] HttpBodyHeader request)
         {
-            EntitiesRepository repo = new EntitiesRepository();
-            List<Entity> results = repo.SelectAll();
+
+            switch (request.scheme) {
+                case "ecsCode":
+                    switch (request.model) {
+                        case "Entity":
+                            switch (request.verb) {
+                                case "get":break;
+                                default: return Unauthorized();
+                            }
+                            break;
+                        default: return Unauthorized();
+                    }
+                    break;
+                default: return Unauthorized();
+            }
+
+            List<Entity> results = _repo.SelectAll();
             if (results == null) { return NotFound(); }
             return Ok(results);
         }

@@ -22,7 +22,7 @@ namespace ecsCore.Data
       public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception,
         Func<TState, Exception, string> formatter) {
         //Note, the DbCommandLogData class will be replaced at some point so be wary of using it
-        if (state is DbCommandLogData)
+        //if (state is DbCommandLogData)
         {
           Console.WriteLine(formatter(state, exception));
           Console.WriteLine();
