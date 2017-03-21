@@ -8,10 +8,10 @@ namespace ecsCore.Data
 {
     public class DataContext : DbContext
     {
-        //public DataContext(DbContextOptions<DataContext> options)
-        //    : base(options)
-        //{
-        //}
+        public DataContext(DbContextOptions<DataContext> options)
+            : base(options)
+        {
+        }
 
         public DbSet<Entity> Entities { get; set; }
         public DbSet<EntityAddress> EntityAddresses { get; set; }
@@ -52,10 +52,10 @@ namespace ecsCore.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-              "Server = (localdb)\\mssqllocaldb; Database = ecsCoreDB; Trusted_Connection = True; ",
-              options => options.MaxBatchSize(30));
-            optionsBuilder.EnableSensitiveDataLogging();
+            //optionsBuilder.UseSqlServer(
+            //  "Server = (localdb)\\mssqllocaldb; Database = ecsCoreDB; Trusted_Connection = True; ",
+            //  options => options.MaxBatchSize(30));
+            //optionsBuilder.EnableSensitiveDataLogging();
         }
         public override int SaveChanges()
         {

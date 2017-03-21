@@ -9,24 +9,28 @@ namespace ecsCore.Data.Repositories
 {
     public class EntitiesRepository : IRepository<Entity>
     {
+        private DataContext _context;
+
+        public EntitiesRepository(DataContext ctx)
+        {
+            _context = ctx;
+        }
         public void Insert(Entity item)
         {
             throw new NotImplementedException();
         }
-
         public Entity SelectById(string key)
         {
             throw new NotImplementedException();
         }
-
         public List<Entity> SelectAll()
         {
             List<Entity> myEntity;
             try
             {
-                using (var ctx = new DataContext())
+                using (_context)
                 {
-                    myEntity = ctx.Entities
+                    myEntity = _context.Entities
                         .Include(i => i.Names)
                         .Include(i => i.Phones)
                         .Include(i => i.Addresses)
@@ -41,12 +45,10 @@ namespace ecsCore.Data.Repositories
                 return null;
             }
         }
-
         public void Delete(string Id)
         {
             throw new NotImplementedException();
         }
-
         public void Update(Entity item)
         {
             throw new NotImplementedException();

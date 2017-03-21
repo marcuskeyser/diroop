@@ -12,8 +12,10 @@ namespace ecsCore.WebApi.Controllers
     [Route("api/[controller]")]
     public partial class DataController : Controller
     {
-        EntitiesRepository _repo = new EntitiesRepository();
-        public DataController(EntitiesRepository repo) {
+        //EntitiesRepository _repo = new EntitiesRepository();
+        private IRepository<Entity> _repo;
+        public DataController(IRepository<Entity> repo)
+        {
             _repo = repo;
         }
 
@@ -22,7 +24,7 @@ namespace ecsCore.WebApi.Controllers
         {
 
             switch (request.scheme) {
-                case "ecsCode":
+                case "ecsCore":
                     switch (request.model) {
                         case "Entity":
                             switch (request.verb) {
