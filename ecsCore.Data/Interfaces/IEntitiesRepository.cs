@@ -7,10 +7,10 @@ namespace ecsCore.Data
 {
     public interface IRepository<T>
     {
-        void Insert(T item);
-        List<T> SelectAll();
-        T SelectById(string key);
-        void Delete(string Id);
-        void Update(T item);
+        void Insert(T item, HttpBodyHeader request);
+        List<T> SelectAll(HttpBodyHeader request);
+        T SelectById(string key, HttpBodyHeader request);
+        void Delete(string Id, HttpBodyHeader request);
+        void Update(T item, HttpBodyHeader request);
     }
 }

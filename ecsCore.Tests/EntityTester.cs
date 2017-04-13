@@ -6,28 +6,46 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
+using Microsoft.EntityFrameworkCore;
 using Xunit.Abstractions;
 using ecsCore.Data.Repositories;
+using Microsoft.AspNetCore.Mvc;
+using ecsCore.WebApi.Controllers;
 
 namespace ecsCore.Tests
 {
     public partial class EntityTester : _TesterMethods
     {
-        #region METHODS  
-
-        //Interfaces
+        #region PRIVATE MEMEERS  
         private readonly ITestOutputHelper _output;
-        //Constructor
+        private IRepository<Entity> _repo;
+        private DataContext _ctx;
+        private DataController _ctrl;
+
         public EntityTester(ITestOutputHelper output)
         {
+
             _output = output;
+
+            // Initialize DbContext
+            var optionsBuilder = new DbContextOptionsBuilder<DataContext>();
+            optionsBuilder.UseSqlServer(
+                "Server = (localdb)\\mssqllocaldb; Database = ecsCoreDB; Trusted_Connection = True; ",
+                options => options.MaxBatchSize(30));
+            optionsBuilder.EnableSensitiveDataLogging();
+
+            _ctx = new DataContext(optionsBuilder.Options);
+            _repo = new EntitiesRepository(_ctx);
+
+
+
         }
-        //Methods
+
         private void SaveEntityChanges(Entity myNewEntity)
         {
             try
             {
-                using (var ctx = new DataContext())
+                using (var ctx = _ctx)
                 {
                     ctx.GetService<ILoggerFactory>().AddProvider(new ecsLoggerService());
                     ctx.Entities.Add(myNewEntity);
@@ -47,8 +65,7 @@ namespace ecsCore.Tests
             //FromRepo
             try
             {
-                EntitiesRepository repo = new EntitiesRepository();
-                List<Entity> results = repo.SelectAll();
+                List<Entity> results = _repo.SelectAll(new HttpBodyHeader());
                 PassTest();
                 return results;
             }
@@ -65,7 +82,7 @@ namespace ecsCore.Tests
             List<Entity> results;
             try
             {
-                using (var ctx = new DataContext())
+                using (var ctx = _ctx)
                 {
                     ctx.GetService<ILoggerFactory>().AddProvider(new ecsLoggerService());
                     results = ctx.Entities.ToList();
@@ -81,7 +98,7 @@ namespace ecsCore.Tests
                 return null;
             }            
         }
-        #endregion METHODS
+        #endregion PRIVATE MEMEERS  
         #region SIMPLE INSERT TESTS
         [Fact]
         public void InsertEntity()

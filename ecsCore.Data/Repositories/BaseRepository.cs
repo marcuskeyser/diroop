@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Expressions;
+using ecsCore.Domain.POCO;
 
 namespace ecsCore.Data.Repositories
 {
@@ -16,6 +17,24 @@ namespace ecsCore.Data.Repositories
         {
             _context = context;
             _dbSet = context.Set<T>();
+        }
+
+        private void RequestValidator(HttpBodyHeader request)
+        {
+            //switch (request.scheme) {
+            //    case "ecsCore":
+            //        switch (request.model) {
+            //            case "Entity":
+            //                switch (request.verb) {
+            //                    case "get":break;
+            //                    default: return Unauthorized();
+            //                }
+            //                break;
+            //            default: return Unauthorized();
+            //        }
+            //        break;
+            //    default: return Unauthorized();
+            //}
         }
         public void Delete(string Id)
         {

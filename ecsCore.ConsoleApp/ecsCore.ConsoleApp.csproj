@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="2.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ecsCore.Data\ecsCore.Data.csproj" />
     <ProjectReference Include="..\ecsCore.Domain\ecsCore.Domain.csproj" />
   </ItemGroup>

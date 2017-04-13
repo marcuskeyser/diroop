@@ -22,6 +22,9 @@ namespace ecsCore.Data
         public DbSet<EntityRelationship> EntityRelationships { get; set; }
         public DbSet<EntitySocialMedia> EntitySocialMedia { get; set; }
 
+        public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    modelBuilder.Entity<_Base>().Property(p => p.Guid).HasDefaultValue(Guid.NewGuid());

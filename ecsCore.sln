@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecsCore.Domain", "ecsCore.Domain\ecsCore.Domain.csproj", "{26BD82BD-218A-4987-A42F-AF11CECB1FAF}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecsCore.System", "ecsCore.Constants\ecsCore.System.csproj", "{23A817C3-D00E-415A-A307-AF5C9FD1FCD5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecsCore.WebApi", "ecsCore.WebApi\ecsCore.WebApi.csproj", "{7CCF89C4-BA97-490D-A3E9-A37EB59C9074}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ecsCore.OAuth", "ecsCore.OAuth\ecsCore.OAuth.csproj", "{008A7540-9818-4398-A4E0-6E89443E956D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{7CCF89C4-BA97-490D-A3E9-A37EB59C9074}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CCF89C4-BA97-490D-A3E9-A37EB59C9074}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CCF89C4-BA97-490D-A3E9-A37EB59C9074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{008A7540-9818-4398-A4E0-6E89443E956D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{008A7540-9818-4398-A4E0-6E89443E956D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{008A7540-9818-4398-A4E0-6E89443E956D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{008A7540-9818-4398-A4E0-6E89443E956D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

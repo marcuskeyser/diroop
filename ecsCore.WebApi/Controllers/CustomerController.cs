@@ -1,15 +1,17 @@
 ﻿using System;
+using ecsCore.Domain.POCO;
 using Microsoft.AspNetCore.Mvc;
 using ecsCore.Data;
-using ecsCore.Domain.POCO;
+using System.Collections.Generic;
+
 
 namespace ecsCore.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class DataController : Controller, IecsCoreController
+    public class CustomerController : Controller, IecsCoreController
     {
-        private IRepository<Entity> _repo;
-        public DataController(IRepository<Entity> repo)
+        private IRepository<Customer> _repo;
+        public CustomerController(IRepository<Customer> repo)
         {
             _repo = repo;
         }
@@ -29,9 +31,12 @@ namespace ecsCore.WebApi.Controllers
             throw new NotImplementedException();
         }
 
+        [HttpPost]
         public IActionResult Post([FromBody] HttpBodyHeader request)
         {
-            throw new NotImplementedException();
+            List<Customer> results = _repo.SelectAll(request);
+            if (results == null) { return NotFound(); }
+            return Ok(results);
         }
 
         public void Put(int id, [FromBody] string value)

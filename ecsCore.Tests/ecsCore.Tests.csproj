@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ecsCore.Data\ecsCore.Data.csproj" />
     <ProjectReference Include="..\ecsCore.Domain\ecsCore.Domain.csproj" />
+    <ProjectReference Include="..\ecsCore.WebApi\ecsCore.WebApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>

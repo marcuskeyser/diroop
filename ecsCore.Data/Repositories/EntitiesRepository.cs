@@ -15,41 +15,42 @@ namespace ecsCore.Data.Repositories
         {
             _context = ctx;
         }
-        public void Insert(Entity item)
-        {
-            throw new NotImplementedException();
-        }
-        public Entity SelectById(string key)
-        {
-            throw new NotImplementedException();
-        }
-        public List<Entity> SelectAll()
+        public List<Entity> SelectAll(HttpBodyHeader request)
         {
             List<Entity> myEntity;
             try
             {
-                using (_context)
-                {
-                    myEntity = _context.Entities
-                        .Include(i => i.Names)
-                        .Include(i => i.Phones)
-                        .Include(i => i.Addresses)
-                        .Include(i => i.Emails)
-                        .Include(i => i.SocialMedia)
-                        .ToList();
-                    return myEntity;
-                }
+                myEntity = _context.Entities
+                    .Include(i => i.Names)
+                    .Include(i => i.Phones)
+                    .Include(i => i.Addresses)
+                    .Include(i => i.Emails)
+                    .Include(i => i.SocialMedia)
+                    .ToList();
+                return myEntity;
             }
             catch (Exception ex)
             {
                 return null;
             }
         }
-        public void Delete(string Id)
+
+        public void Insert(Entity item, HttpBodyHeader request)
         {
             throw new NotImplementedException();
         }
-        public void Update(Entity item)
+
+        public Entity SelectById(string key, HttpBodyHeader request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(string Id, HttpBodyHeader request)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Entity item, HttpBodyHeader request)
         {
             throw new NotImplementedException();
         }
